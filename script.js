@@ -1,16 +1,16 @@
-document.getElementById("userForm").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent form from refreshing
+document.getElementById('userForm').addEventListener('submit', function (event) {
+  event.preventDefault();
 
-  const name = document.getElementById("name").value.trim();
-  const age = parseInt(document.getElementById("age").value);
+  const name = document.getElementById('name').value.trim();
+  const age = parseInt(document.getElementById('age').value);
 
-  // Step 1: Validate inputs
-  if (!name || !age) {
-    alert("Please enter valid details.");
+  // ✅ Improved validation
+  if (!name || isNaN(age) || age <= 0) {
+    alert('Please enter valid details.');
     return;
   }
 
-  // Step 2: Create Promise
+  // ✅ Promise logic
   const checkAge = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (age > 18) {
@@ -18,10 +18,10 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
       } else {
         reject(`Oh sorry ${name}. You aren't old enough.`);
       }
-    }, 4000);
+    }, 2500); // Reduced delay for better user experience
   });
 
-  // Step 3: Handle Promise result
+  // ✅ Handling Promise resolution/rejection
   checkAge
     .then((message) => alert(message))
     .catch((error) => alert(error));

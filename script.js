@@ -1,4 +1,3 @@
-//your JS code here. If required.
 document.getElementById("userForm").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent form from refreshing
 
